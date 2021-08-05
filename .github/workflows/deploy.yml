@@ -26,4 +26,4 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
         PORT: 22
         KEY: ${{ secrets.SSHKEY }}
-        script: ls -la
+        script: 'ls -la'
