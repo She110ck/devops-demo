@@ -31,11 +31,16 @@ jobs:
 
       - name: mvn install
         uses: appleboy/ssh-action@master
+        env:
+          JDBC_URL: ${{ secrets.JDBC_URL }}
+          JDBC_USERNAME: ${{ secrets.JDBC_USERNAME }}
+          JDBC_PASSWORD: ${{ secrets.JDBC_PASSWORD }}
         with:
           host: ${{ secrets.HOST }}
           USERNAME: ${{ secrets.USERNAME }}
           PORT: 22
           KEY: ${{ secrets.SSHKEY }}
+          envs: JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD
           script: 'cd /home/devops/projects/devops-demo && mvn install'
 
       - name: Restart
